@@ -65,12 +65,10 @@ clean {
     delete file('src/main/generated')
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += "-parameters"
+}
+
 //tasks.named('test') {
 //    useJUnitPlatform()
 //}
-
-
-// QueryDSL을 위한 경로 설정
-clean {
-    delete file('src/main/generated')
-}
