@@ -15,7 +15,7 @@ import java.sql.SQLException;
         @ApiResponse(responseCode = "400", description = "Invalid ID supplied"),
         @ApiResponse(responseCode = "404", description = "Customer not found")
 })
-@CrossOrigin(origins = "*", allowedHeaders = "*") // http://localhost:3000 에서 온 AJAX요청만 받아주겠다는 의미.
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/auth")
@@ -28,5 +28,13 @@ public class AuthController {
     public ResponseEntity<Messenger> login(@RequestBody UserDTO dto) throws SQLException {
         Messenger messenger = service.login(dto);
         return ResponseEntity.ok(messenger);
+    }
+
+    @GetMapping("/existsUsername")
+    public ResponseEntity<Boolean> existsByUsername(@RequestParam("username") String username) {
+        log.info("Parameter information of existsUsername: " + username);
+        Boolean flag = service.existsByUsername(username);
+        log.info("existsUsername : " + username);
+        return ResponseEntity.ok(flag);
     }
 }
