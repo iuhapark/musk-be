@@ -97,7 +97,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Boolean existsUsername(String username) {
-        return null;
+    public Boolean existsByUsername(String username) {
+        Integer count = repository.existsByUsername(username);
+        return count == 1;
     }
 }
