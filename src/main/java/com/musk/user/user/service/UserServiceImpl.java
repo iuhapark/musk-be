@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     public Messenger deleteById(Long id) {
         repository.deleteById(id);
         return Messenger.builder()
-                .message(repository.findById(id).isPresent() ? "SUCCESS" : "FAILURE")
+                .message(repository.findById(id).isPresent() ? "FAILURE" : "SUCCESS")
                 .build();
     }
 
