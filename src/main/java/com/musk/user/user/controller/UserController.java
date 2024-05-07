@@ -38,13 +38,13 @@ public class UserController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Messenger> deleteById(@RequestParam Long id) {
+    public ResponseEntity<Messenger> deleteById(@RequestParam("id") Long id) {
         return ResponseEntity.ok(service.deleteById(id));
     }
 
 
     @GetMapping("/exists")
-    public ResponseEntity<Boolean> existsById(@RequestParam Long id) {
+    public ResponseEntity<Boolean> existsById(@RequestParam("id") Long id) {
         return ResponseEntity.ok(service.existsById(id));
     }
 
